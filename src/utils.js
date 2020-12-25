@@ -271,25 +271,30 @@ export function isFunction(value) {
 }
 
 export function findDOMElements(target) {
-  if (isReactRefObj(target)) {
-    return target.current;
-  }
-  if (isFunction(target)) {
-    return target();
-  }
-  if (typeof target === 'string' && canUseDOM) {
-    let selection = document.querySelectorAll(target);
-    if (!selection.length) {
-      selection = document.querySelectorAll(`#${target}`);
+  try {
+    if (isReactRefObj(target)) {
+      return target.current;
     }
-    if (!selection.length) {
-      throw new Error(
-        `The target '${target}' could not be identified in the dom, tip: check spelling`
-      );
+    if (isFunction(target)) {
+      return target();
     }
-    return selection;
+    if (typeof target === 'string' && canUseDOM) {
+      let selection = document.querySelectorAll(target);
+      if (!selection.length) {
+        selection = document.querySelectorAll(`#${target}`);
+      }
+      if (!selection.length) {
+        throw new Error(
+          `The target '${target}' could not be identified in the dom, tip: check spelling`
+        );
+      }
+      return selection;
+    }
+    return target;
+  } catch(err) {
+    console.error(err);
+    return null
   }
-  return target;
 }
 
 export function isArrayOrNodeList(els) {
