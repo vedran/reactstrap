@@ -27,8 +27,7 @@
     "dtslint": "dtslint types --expectOnly",
     "copy-dts": "npm run copy-dts:lib && npm run copy-dts:esm",
     "copy-dts:lib": "ncp types/lib lib",
-    "copy-dts:esm": "ncp types/lib es",
-    "prepare": "npm run build"
+    "copy-dts:esm": "ncp types/lib es"
   },
   "repository": {
     "type": "git",
