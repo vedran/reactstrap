@@ -3547,7 +3547,12 @@ var TooltipPopoverWrapper = /*#__PURE__*/function (_React$Component) {
       this.removeTargetEvents();
       this._targets = newTarget ? Array.from(newTarget) : [];
       this.currentTargetElement = this.currentTargetElement || this._targets[0];
-      this.addTargetEvents();
+      console.log(this.currentTargetElement);
+      console.log("<<<<<<>>>");
+
+      if (this.currentTargetElement) {
+        this.addTargetEvents();
+      }
     }
   };
 
@@ -3590,7 +3595,7 @@ var TooltipPopoverWrapper = /*#__PURE__*/function (_React$Component) {
     return /*#__PURE__*/React.createElement(PopperContent, {
       className: className,
       target: this.currentTargetElement || this._targets[0],
-      isOpen: isOpen,
+      isOpen: this.currentTargetElement ? isOpen : false,
       hideArrow: hideArrow,
       boundariesElement: boundariesElement,
       placement: placement,

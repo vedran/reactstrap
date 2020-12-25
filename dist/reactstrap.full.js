@@ -10182,7 +10182,12 @@
         this.removeTargetEvents();
         this._targets = newTarget ? Array.from(newTarget) : [];
         this.currentTargetElement = this.currentTargetElement || this._targets[0];
-        this.addTargetEvents();
+        console.log(this.currentTargetElement);
+        console.log("<<<<<<>>>");
+
+        if (this.currentTargetElement) {
+          this.addTargetEvents();
+        }
       }
     };
 
@@ -10225,7 +10230,7 @@
       return /*#__PURE__*/React__default.createElement(PopperContent, {
         className: className,
         target: this.currentTargetElement || this._targets[0],
-        isOpen: isOpen,
+        isOpen: this.currentTargetElement ? isOpen : false,
         hideArrow: hideArrow,
         boundariesElement: boundariesElement,
         placement: placement,

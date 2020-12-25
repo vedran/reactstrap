@@ -314,7 +314,11 @@ class TooltipPopoverWrapper extends React.Component {
       this.removeTargetEvents();
       this._targets = newTarget ? Array.from(newTarget) : [];
       this.currentTargetElement = this.currentTargetElement || this._targets[0];
-      this.addTargetEvents();
+      console.log(this.currentTargetElement);
+      console.log("<<<<<<>>>");
+      if(this.currentTargetElement) {
+          this.addTargetEvents();
+      }
     }
   }
 
@@ -358,10 +362,10 @@ class TooltipPopoverWrapper extends React.Component {
     const classes = mapToCssModules(innerClassName, cssModule);
 
     return (
-      <PopperContent
+    <PopperContent
         className={className}
         target={this.currentTargetElement || this._targets[0]}
-        isOpen={isOpen}
+        isOpen={this.currentTargetElement ? isOpen : false}
         hideArrow={hideArrow}
         boundariesElement={boundariesElement}
         placement={placement}
