@@ -27,11 +27,12 @@
     "dtslint": "dtslint types --expectOnly",
     "copy-dts": "npm run copy-dts:lib && npm run copy-dts:esm",
     "copy-dts:lib": "ncp types/lib lib",
-    "copy-dts:esm": "ncp types/lib es"
+    "copy-dts:esm": "ncp types/lib es",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/reactstrap/reactstrap.git"
+    "url": "git+ssh://git@github.com/vedran/reactstrap.git"
   },
   "files": [
     "LICENSE",
